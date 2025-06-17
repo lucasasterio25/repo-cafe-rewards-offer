@@ -1,6 +1,3 @@
-# repo-cafe-rewards-offer
-
-
 # Cafe Rewards Data Pipeline
 
 # Overview
