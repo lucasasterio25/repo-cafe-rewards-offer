@@ -102,7 +102,7 @@ dim_event = (events.select("event")
 
 #create and write fact_table with join
 fact_offer_events = (events.alias("e")
-                    .join(offers.alias("o"), "offer_id", "left")
+                    .join(F.broadcast(offers).alias("o"), "offer_id", "left")
                     .join(customers.alias("c"), "customer_id", "left")
                     .withColumn("channel_id", F.md5(F.col("channel")))
                     .withColumn("event_id", F.md5(F.col("event")))
