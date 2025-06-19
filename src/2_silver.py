@@ -20,14 +20,14 @@ silver_customers_df = (bronze_customers_df
                         .fillna("N/A", subset=["gender"])
                         .withColumn("became_member_on", F.to_date(F.col("became_member_on").cast("string"), "yyyyMMdd"))
                         .withColumn("age_group",
-                                     when(F.col("age") < 25, "<25")
+                                     F.when(F.col("age") < 25, "<25")
                                     .when((F.col("age") >= 25) & (F.col("age") < 35), "25-34")
                                     .when((F.col("age") >= 35) & (F.col("age") < 50), "35-49")
                                     .when((F.col("age") >= 50) & (F.col("age") < 65), "50-64")
                                     .when((F.col("age") >= 65), "65+")
                                     .otherwise("N/A"))
                         .withColumn("income_group",
-                                     when(F.col("income") < 40000, "low income")
+                                     F.when(F.col("income") < 40000, "low income")
                                     .when((F.col("income") >= 40000) & (F.col("income") <= 70000), "middle income")
                                     .when((F.col("income") > 70000), "high income")
                                     .otherwise("N/A"))
