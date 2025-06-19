@@ -21,27 +21,17 @@ Refined Layer (Gold): includes dimension tables, a fact table, and aggregated an
 
 All data was saved in Delta format, enabling fast, reliable querying and support for time travel and ACID transactions. This architecture allows for scalability, modularity, and clear separation of concerns across the pipeline.
 
-
-
-# Project Structure
-cafe-rewards-pipeline/
-├── notebooks/
-│   └── cafe_rewards_etl.py            # PySpark code for ETL
-├── diagrams/
-│   └── architecture.png               # Exported diagram (optional)
-├── README.md
-
-
 # Technologies Used
 Databricks: Unified platform for data engineering and analytics
 Databricks Workflows: Used for ETL orchestration
 PySpark: Data processing and transformations
 Delta Lake: Reliable storage format with ACID transactions
+Delta Lake volume: Upload files with security
 Unity Catalog + Volumes: Governed and secure data storage
 
 
 # Medallion Architecture
-Raw Layer
+Raw Layer (Bronze)
 Ingested raw files from Kaggle into Unity Catalog Volumes using API
 
 Trusted Layer (Silver)
